@@ -17,14 +17,14 @@ var hour = moment().format("h:00 A");
 
 for (i = 0; i < workHours.length; i++) {
   var timePeriod = $("<div>");
-  timePeriod.addClass("row my-4 hour w-100 justify-content-center");
+  timePeriod.addClass("row ny-4 hour w-100 justify-content-center");
   timePeriod.text(workHours[i]);
-  console.log(timePeriod);
+  //console.log(timePeriod);
 
   var textArea = $("<textarea>");
   textArea.addClass("col-9 time-block description");
   textArea.attr("name", workHours[i]);
-  console.log(textArea);
+  // console.log(textArea);
   var button = $("<button>");
   button.addClass(
     "saveBtn btn col-2 d-flex align-items-center justify-content-center "
@@ -32,17 +32,16 @@ for (i = 0; i < workHours.length; i++) {
 
   var icon = $("<li>");
   icon.addClass("bi bi-save-fill");
-
-  timeBlockEl.append(timePeriod);
-  timePeriod.append(textArea);
-  timePeriod.append(button);
-  button.append(icon);
-
-  if (parseInt(workHours[i]) < today.getHours()) {
-    textArea.addClass("past");
-  } else if (parseInt(workHours[i]) > today.getHours()) {
-    textArea.addClass("future");
-  } else {
-    textArea.addClass("present");
-  }
 }
+timeBlockEl.append(timePeriod);
+timePeriod.append(textArea);
+timePeriod.append(button);
+button.append(icon);
+
+// if (parseInt(workHours[i]) < today.getHours()) {
+//   textArea.addClass("past");
+// } else if (parseInt(workHours[i]) > today.getHours()) {
+//   textArea.addClass("future");
+// } else {
+//   textArea.addClass("present");
+//}
