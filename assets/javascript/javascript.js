@@ -1,3 +1,6 @@
+// helped by a classmate
+
+//setting the current time in the header
 var today = moment();
 $("#currentDay").text(today.format("MMM Do, YYYY"));
 
@@ -24,6 +27,7 @@ for (i = 0; i < workHours.length; i++) {
   var textArea = $("<textarea>");
   textArea.addClass("col-9 time-block description");
   textArea.attr("name", workHours[i]);
+
   // console.log(textArea);
   var button = $("<button>");
   button.addClass(
@@ -32,16 +36,29 @@ for (i = 0; i < workHours.length; i++) {
 
   var icon = $("<li>");
   icon.addClass("bi bi-save-fill");
-}
-timeBlockEl.append(timePeriod);
-timePeriod.append(textArea);
-timePeriod.append(button);
-button.append(icon);
 
-// if (parseInt(workHours[i]) < today.getHours()) {
-//   textArea.addClass("past");
-// } else if (parseInt(workHours[i]) > today.getHours()) {
-//   textArea.addClass("future");
-// } else {
-//   textArea.addClass("present");
-//}
+  // append eleents to the DOM
+  button.append(icon);
+  timePeriod.append(textArea);
+  timePeriod.append(button);
+  timeBlockEl.append(timePeriod);
+}
+
+if (parseInt(workHours[i]) < today.hours()) {
+  textArea.addClass("past");
+} else if (parseInt(workHours[i]) > today.hours()) {
+  textArea.addClass("future");
+} else {
+  textArea.addClass("present");
+}
+
+// $(".btn").click(function (event) {
+//   var workEvent = event.target.previousElemetSibling.value.trim();
+//   localStorage.setItem(event.target.previousElemetSibling.name, workEvent);
+// });
+
+$(".btn").click(function (event) {
+  //var element = event.target;
+
+  localStorage.setItem("workEven", textArea.text.name);
+});
