@@ -58,7 +58,7 @@ if (parseInt(workHours[i]) < today.hours()) {
 // });
 
 $(".btn").click(function (event) {
-  //var element = event.target;
-
+  var element = event.target;
+  //var saveIt = element.attr("name");
   localStorage.setItem("workEven", textArea.text.name);
 });
