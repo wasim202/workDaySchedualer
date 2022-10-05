@@ -3,15 +3,15 @@ var today = moment();
 $("#currentDay").text(today.format("MMM Do, YYYY"));
 
 var workHours = [
-  "09:00 am",
-  "10:00 am",
-  "11:00 am",
-  "12:00 pm",
-  "01:00 pm",
-  "02:00 pm",
-  "03:00 pm",
-  "04:00 pm",
-  "05:00 pm",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
 ];
 var timeBlockEl = $("#timeBlocks");
 var hour = moment().format("h:00 A");
@@ -19,11 +19,12 @@ var hour = moment().format("h:00 A");
 for (i = 0; i < workHours.length; i++) {
   var totalTimeBlock = $("<div>");
   totalTimeBlock.addClass("row border time-block border-primary");
+  totalTimeBlock.attr("id", workHours[i])
 
   var timePeriod = $("<div>");
   timePeriod.addClass(" col-md-2  hour");
   //timePeriod.addClass(" time-div")
-  timePeriod.text(workHours[i]);
+  timePeriod.text(workHours[i] + ":00");
   //console.log(timePeriod);
 
   var textArea = $("<textarea>");
@@ -37,7 +38,7 @@ for (i = 0; i < workHours.length; i++) {
   );
 
   var icon = $("<i>");
-  icon.addClass("fas fa-lock");
+  icon.addClass("far fa-save fa-lg");
 
   // append eleents to the DOM
   button.append(icon);
@@ -62,7 +63,18 @@ for (i = 0; i < workHours.length; i++) {
 
 $(".btn").click(function (event) {
   event.preventDefault();
-  //var element = event.target;
-  //var saveIt = element.attr("name");
-  localStorage.setItem("workEven", textArea.text.name);
+  var element = $(this).parent().attr("id");
+  //console.log(element);
+  var saveIt = $(this).siblings("textarea").val();
+  localStorage.setItem(element,saveIt);
 });
+
+$(`#09 textarea`).val(localStorage.getItem("09"));
+$(`#10 textarea`).val(localStorage.getItem("10"));
+$(`#11 textarea`).val(localStorage.getItem("11"));
+$(`#12 textarea`).val(localStorage.getItem("12"));
+$(`#13 textarea`).val(localStorage.getItem("13"));
+$(`#14 textarea`).val(localStorage.getItem("14"));
+$(`#15 textarea`).val(localStorage.getItem("15"));
+$(`#16 textarea`).val(localStorage.getItem("16"));
+$(`#17 textarea`).val(localStorage.getItem("17"));
