@@ -20,7 +20,8 @@ var hour = moment().format("h:00 A");
 
 for (i = 0; i < workHours.length; i++) {
   var timePeriod = $("<div>");
-  timePeriod.addClass("row ny-4 hour w-100 justify-content-center");
+  //timePeriod.addClass("row ny-4 hour w-100 justify-content-center");
+  timePeriod.addClass("row time-div");
   timePeriod.text(workHours[i]);
   //console.log(timePeriod);
 
@@ -42,15 +43,16 @@ for (i = 0; i < workHours.length; i++) {
   timePeriod.append(textArea);
   timePeriod.append(button);
   timeBlockEl.append(timePeriod);
+
+  if (parseInt(workHours[i]) < today.hours()) {
+    textArea.addClass("past");
+  } else if (parseInt(workHours[i]) > today.hours()) {
+    textArea.addClass("future");
+  } else {
+    textArea.addClass("present");
+  }
 }
 
-if (parseInt(workHours[i]) < today.hours()) {
-  textArea.addClass("past");
-} else if (parseInt(workHours[i]) > today.hours()) {
-  textArea.addClass("future");
-} else {
-  textArea.addClass("present");
-}
 
 // $(".btn").click(function (event) {
 //   var workEvent = event.target.previousElemetSibling.value.trim();
@@ -58,7 +60,11 @@ if (parseInt(workHours[i]) < today.hours()) {
 // });
 
 $(".btn").click(function (event) {
+  event.preventDefault();
   var element = event.target;
   //var saveIt = element.attr("name");
-  localStorage.setItem("workEven", textArea.text.name);
+  var vale = $(".time-block").val();
+  var time = $(".time-div").val();
+  //localStorage.setItem("workEvent", textArea.text.name);
+  localStorage.setItem("WorkEvent", vale);
 });
