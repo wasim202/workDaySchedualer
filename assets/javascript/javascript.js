@@ -1,5 +1,3 @@
-// helped by a classmate
-
 //setting the current time in the header
 var today = moment();
 $("#currentDay").text(today.format("MMM Do, YYYY"));
@@ -19,30 +17,34 @@ var timeBlockEl = $("#timeBlocks");
 var hour = moment().format("h:00 A");
 
 for (i = 0; i < workHours.length; i++) {
+  var totalTimeBlock = $("<div>");
+  totalTimeBlock.addClass("row border time-block border-primary");
+
   var timePeriod = $("<div>");
-  //timePeriod.addClass("row ny-4 hour w-100 justify-content-center");
-  timePeriod.addClass("row time-div");
+  timePeriod.addClass(" col-md-2  hour");
+  //timePeriod.addClass(" time-div")
   timePeriod.text(workHours[i]);
   //console.log(timePeriod);
 
   var textArea = $("<textarea>");
-  textArea.addClass("col-9 time-block description");
+  textArea.addClass("col-md-8  description");
   textArea.attr("name", workHours[i]);
-
   // console.log(textArea);
+
   var button = $("<button>");
   button.addClass(
-    "saveBtn btn col-2 d-flex align-items-center justify-content-center "
+    "saveBtn btn col-md-2 "
   );
 
-  var icon = $("<li>");
-  icon.addClass("bi bi-save-fill");
+  var icon = $("<i>");
+  icon.addClass("fas fa-lock");
 
   // append eleents to the DOM
   button.append(icon);
-  timePeriod.append(textArea);
-  timePeriod.append(button);
-  timeBlockEl.append(timePeriod);
+  totalTimeBlock.append(timePeriod);
+  totalTimeBlock.append(textArea);
+  totalTimeBlock.append(button);
+  timeBlockEl.append(totalTimeBlock);
 
   if (parseInt(workHours[i]) < today.hours()) {
     textArea.addClass("past");
@@ -53,7 +55,6 @@ for (i = 0; i < workHours.length; i++) {
   }
 }
 
-
 // $(".btn").click(function (event) {
 //   var workEvent = event.target.previousElemetSibling.value.trim();
 //   localStorage.setItem(event.target.previousElemetSibling.name, workEvent);
@@ -61,10 +62,7 @@ for (i = 0; i < workHours.length; i++) {
 
 $(".btn").click(function (event) {
   event.preventDefault();
-  var element = event.target;
+  //var element = event.target;
   //var saveIt = element.attr("name");
-  var vale = $(".time-block").val();
-  var time = $(".time-div").val();
-  //localStorage.setItem("workEvent", textArea.text.name);
-  localStorage.setItem("WorkEvent", vale);
+  localStorage.setItem("workEven", textArea.text.name);
 });
