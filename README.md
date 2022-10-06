@@ -23,7 +23,8 @@
 
 ## to be used to organize a work day schedules.
 
-![ReadMe Image](assets/images/ReadMeImage.png)
+![Homepage Image](assets/images/homepage.png)
+![Homepage Image](assets/images/localStorage.png)
 
 ## License: N/A
 

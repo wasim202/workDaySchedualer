@@ -38,7 +38,7 @@ for (i = 0; i < workHours.length; i++) {
   );
 
   var icon = $("<i>");
-  icon.addClass("far fa-save fa-lg");
+  icon.addClass("bi bi-save2");
 
   // append eleents to the DOM
   button.append(icon);
